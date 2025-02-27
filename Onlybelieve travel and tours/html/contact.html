@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <link rel="stylesheet" href="../bootstrap-5.3.3-dist/css/bootstrap.min.css"/>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background-color: #f4f7fa;
+        }
+
+        nav {
+            background-color: #f0f0f0;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed; /* Keeps nav at top */
+            width: 100%;
+            top: 0;
+            z-index: 1000; /* Ensures nav stays above other content */
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            max-height: 50px;
+            max-width: 100px;
+            margin-right: 10px;
+        }
+
+        .logo span {
+            font-weight: bold;
+            font-size: large;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav li {
+            margin-left: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .contact-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding-top: 80px; /* Adds space for fixed nav */
+        }
+
+        .contact-form {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 450px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 500;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        select:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        select {
+            appearance: none;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="black" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>') no-repeat right 12px center;
+            background-size: 12px;
+        }
+
+        input[type="file"] {
+            width: 100%;
+            padding: 10px 0;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .file-info {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <img src="../images/WhatsApp Image 2025-02-13 at 00.54.40_b25fb237.jpg" alt="Travel Site Logo">
+            <span>Travel and Tours</span>
+        </div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="opportunities.html">Destinations</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="contact-container">
+        <div class="contact-form">
+            <h2>Contact Us</h2>
+            <form id="contactForm" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required placeholder="Enter a valid email">
+                </div>
+                <div class="form-group">
+                    <label for="category">Select Category</label>
+                    <select id="category" name="category" required>
+                        <option value="" disabled selected>Select an option</option>
+                        <option value="travel">Travel</option>
+                        <option value="job">Job</option>
+                        <option value="school">School</option>
+                        <option value="holidays">Holidays</option>
+                        <option value="others">Others</option>
+
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="comments">Comments</label>
+                    <textarea id="comments" name="comments" required placeholder="How can we help you?"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="pdf">Upload PDF</label>
+                    <input type="file" id="pdf" name="pdf" accept=".pdf">
+                    <div class="file-info" id="fileInfo"></div>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        © 2025 Only Believe Travel and Tours
+    </footer>
+
+    <script>
+        const form = document.getElementById('contactForm');
+        const fileInfo = document.getElementById('fileInfo');
+    
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const formData = new FormData(form);
+    
+            try {
+                const response = await fetch('http://localhost:3000/submit', {
+                    method: 'POST',
+                    body: formData,
+                });
+                const result = await response.json();
+    
+                if (response.ok) {
+                    alert('Form submitted successfully!');
+                    form.reset();
+                    fileInfo.textContent = '';
+                } else {
+                    alert(`Error: ${result.message}`);
+                }
+            } catch (error) {
+                alert('An error occurred. Please try again.');
+                console.error(error);
+            }
+        });
+    
+        document.getElementById('pdf').addEventListener('change', function() {
+            const file = this.files[0];
+            if (file && file.type === 'application/pdf') {
+                fileInfo.textContent = `Selected: ${file.name} (${(file.size / 1024).toFixed(2)} KB)`;
+            } else {
+                fileInfo.textContent = 'Please upload a valid PDF file.';
+                this.value = '';
+            }
+        });
+    </script>
+</body>
+</html>
