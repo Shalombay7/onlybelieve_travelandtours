@@ -20,6 +20,10 @@
     {
       "src": "frontend/js/**/*",
       "use": "@vercel/static"
+    },
+    {
+      "src": "frontend/bootstrap/**/*",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
@@ -38,6 +42,10 @@
     {
       "src": "/js/(.*)",
       "dest": "frontend/js/"
+    },
+    {
+      "src": "/bootstrap/(.*)",
+      "dest": "frontend/bootstrap/"
     },
     {
       "src": "/(.*)",
