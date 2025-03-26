@@ -10,7 +10,7 @@
       "use": "@vercel/static"
     },
     {
-      "src": "frontend/images/**/*",
+      "src": "public_images/**/*",
       "use": "@vercel/static"
     },
     {
@@ -33,7 +33,7 @@
     },
     {
       "src": "/images/(.*)",
-      "dest": "/frontend/images/$1"
+      "dest": "/public_images/$1"
     },
     {
       "src": "/css/(.*)",
