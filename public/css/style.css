@@ -1,19 +1,57 @@
-.logo {
-    display: flex;
-    align-items: center; /* Vertically align image and text */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
 }
 
-.logo img {
-    max-height:  50px; /* Set a maximum height */
-    max-width: 100px; /* Set a maximum width */
-    margin-right: 10px;
-}
-.logo span{
-    font-weight: bold;
-    font-size: large;
+.navbar {
+    background-color: #f8f9fa;
+    padding: 1rem 2rem;
 }
 
-.selector-for-some-widget {
-    box-sizing: content-box;
-  }
-  
+.navbar-brand img {
+    max-height: 50px !important;
+    width: auto;
+    margin-right: 1rem;
+}
+
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/rocket light2.png') no-repeat center center/cover;
+    color: white;
+    padding: 6rem 2rem;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin-bottom: 1.5rem;
+}
+
+.destinations, .content {
+    padding: 4rem 2rem;
+}
+
+.destination-card {
+    transition: transform 0.3s ease;
+}
+
+.destination-card:hover {
+    transform: translateY(-10px);
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+footer {
+    background-color: #212529;
+    color: white;
+    padding: 1.5rem;
+}
